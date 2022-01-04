@@ -700,6 +700,8 @@ def ActRobot(robot):
     if (hasattr(robot, 'local_time_robodance')==False):                
                 setattr(robot, "local_time_robodance", -1)
     if('enemy' in robot_investigate(robot) or robot.local_time_robodance!=-1):
+        if('enemy' in robot_investigate(robot)):
+               robot.DeployVirus(robot.GetVirus())
         return_var=robot_robodance(robot)
         return return_var
     
@@ -862,10 +864,8 @@ def ActBase(base):
     if(base.global_temp_time_lineattack==0):
         base.global_temp_time_lineattack+=1
     elif(base.global_temp_time_lineattack==1):
-        base.global_temp_time_lineattack+=1
-    elif(base.global_temp_time_lineattack==2):
-        base.global_temp_time_lineattack+=1
-    elif(base.global_temp_time_lineattack==3):
+        
+        
         base.global_temp_time_lineattack=0
         base.global_time_lineattack=1
     return
