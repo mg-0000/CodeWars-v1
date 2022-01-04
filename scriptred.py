@@ -562,9 +562,11 @@ def robot_lineattack(robot):
     robot_y=int(robot_y)+1
     canvas_x=robot.GetDimensionX()
     canvas_y=robot.GetDimensionY()
-    bluebase_y=canvas_y-(base_y+1)
-    bluebase_x=canvas_x-(base_x+1)
-    if(robot_x==1 or robot_x==canvas_x or robot_y==1 or robot_y==canvas_y):
+    bluebase_y=canvas_y-(base_y-1)
+    bluebase_x=canvas_x-(base_x-1)
+    if(robot_x==1 or robot_x==canvas_x or robot_y==1 or robot_y==canvas_y or hasattr(robot,'temp_goto')==True):
+           if(hasattr(robot,'temp_goto')==False):
+                  setattr(robot,'temp_goto',0)
            return robot_goto(robot,bluebase_x,bluebase_y)
     
 
